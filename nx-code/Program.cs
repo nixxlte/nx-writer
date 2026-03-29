@@ -1,23 +1,80 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 
 internal class Program {
     // Code by imNyan.T64 -w-
 
-    public static string option; 
+    public static string[] simpleDistros = { "ChromeOS-Flex", "xUbuntu", "Ubuntu" };
+    public static string[] advancedDistros = { "Brunch-Framework", "Arch", "Debian" };
+
+    public static string option;
     public static string Prefix;
     public static string SPrefix;
-    public static bool IsCommand(string input, string full, string shortCmd) {
+
+    public static bool IsCommand(string input, string full, string shortCmd)
+    {
         return input.Equals(Prefix + full, StringComparison.OrdinalIgnoreCase) ||
                input.Equals(SPrefix + shortCmd, StringComparison.OrdinalIgnoreCase);
     }
 
+    public static void Write(string selection)
+    {
+        if (selection == string.Empty)
+        {
+            option = string.Empty;
+            Console.WriteLine("Please select the write method:\n [1] Simple\n [2] Advanced");
+            option = Console.ReadLine();
+            if (option == "1" || option.Equals("simple", StringComparison.OrdinalIgnoreCase))
+            {
+
+            }
+        }
+        else if (selection == "simple")
+        {
+
+        }
+        else if (selection == "advanced")
+        {
+
+        }
+    }
+
+    public static void Show() {
+        Console.Clear();
+        Console.WriteLine("Avaiable distros:");
+        Console.WriteLine("Simple mode");
+        foreach (var distro in simpleDistros) {
+            Console.WriteLine(". " + distro);
+        }
+        Console.WriteLine("\nAdvanced mode");
+        foreach (var distro in advancedDistros) {
+            Console.WriteLine(". " + distro);
+        }
+    }
+
+public static void Simple() {
+        Write("simple");
+    }
+    public static void Complex() {
+        Write("advanced");
+    }
+    
     public static void Help() {
         Console.WriteLine("NX utility help:");
     }
     
-    public static void Main(string[] args)
-    {
+    public static void Mode(int mode) {
+        if (mode == 0) {
+            Console.WriteLine("NX CLI simple mode");
+            Simple();
+        } else if (mode == 1) {
+            Console.WriteLine("NX CLI advanced mode");
+            Complex();
+        }
+    }
+    
+    public static void Main(string[] args) {
         var startup = Environment.GetCommandLineArgs();
         if (startup.Length > 1) {
             Init(startup);
@@ -32,6 +89,15 @@ internal class Program {
             Console.WriteLine("Hello, World!");
         } else if (IsCommand(cmd, "help", "h")) {
             Help();
+        } else if (IsCommand(cmd, "write", "w")) {
+            if (argument.Length > 1 &&
+                (argument[1].Equals(Prefix + "advanced") || argument[1].Equals(SPrefix + "a"))) {
+                Complex();
+            } else {
+                Simple();
+            }
+        } else if (IsCommand(cmd, "list", "l")) {
+            Show();
         }
     }
 }
