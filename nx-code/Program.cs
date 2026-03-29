@@ -1,4 +1,5 @@
-﻿using System;
+﻿// @formatter:off
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -18,26 +19,8 @@ internal class Program {
                input.Equals(SPrefix + shortCmd, StringComparison.OrdinalIgnoreCase);
     }
 
-    public static void Write(string selection)
-    {
-        if (selection == string.Empty)
-        {
-            option = string.Empty;
-            Console.WriteLine("Please select the write method:\n [1] Simple\n [2] Advanced");
-            option = Console.ReadLine();
-            if (option == "1" || option.Equals("simple", StringComparison.OrdinalIgnoreCase))
-            {
-
-            }
-        }
-        else if (selection == "simple")
-        {
-
-        }
-        else if (selection == "advanced")
-        {
-
-        }
+    public static void Write(string selection) {
+        
     }
 
     public static void Show() {
@@ -53,11 +36,18 @@ internal class Program {
         }
     }
 
-public static void Simple() {
-        Write("simple");
+    public static void Simple(string on) {
+        if (on == "argument"){
+        } else if (on == "activation") {
+            Write("simple");
+        }
     }
-    public static void Complex() {
-        Write("advanced");
+    
+    public static void Complex(string on) {
+        if (on == "argument"){
+        } else if (on == "activation") {
+            Write("advanced");
+        }
     }
     
     public static void Help() {
@@ -67,10 +57,10 @@ public static void Simple() {
     public static void Mode(int mode) {
         if (mode == 0) {
             Console.WriteLine("NX CLI simple mode");
-            Simple();
+            Simple("argument");
         } else if (mode == 1) {
             Console.WriteLine("NX CLI advanced mode");
-            Complex();
+            Complex("argument");
         }
     }
     
@@ -92,9 +82,19 @@ public static void Simple() {
         } else if (IsCommand(cmd, "write", "w")) {
             if (argument.Length > 1 &&
                 (argument[1].Equals(Prefix + "advanced") || argument[1].Equals(SPrefix + "a"))) {
-                Complex();
-            } else {
-                Simple();
+                Mode(1);
+            }
+            if (argument.Length > 1 &&
+                (argument[1].ToLower() != "advanced" || argument[1].ToLower() != "a")) { // if theres an argument after -w, but the arg isnt "--advanced" or "-a"
+                Mode(0);
+            }
+            if (argument.Length < 1) { // if theres not an argument afer -w
+                option = string.Empty;
+                Console.WriteLine("Please select the write method:\n [1] Simple\n [2] Advanced");
+                option = Console.ReadLine();
+                if (option == "1" || option.Equals("simple", StringComparison.OrdinalIgnoreCase)) {
+
+                }
             }
         } else if (IsCommand(cmd, "list", "l")) {
             Show();
