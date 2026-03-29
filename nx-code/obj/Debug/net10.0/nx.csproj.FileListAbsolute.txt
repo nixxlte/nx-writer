@@ -1,0 +1,15 @@
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/bin/Debug/net10.0/nx
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/bin/Debug/net10.0/nx.deps.json
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/bin/Debug/net10.0/nx.runtimeconfig.json
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/bin/Debug/net10.0/nx.dll
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/bin/Debug/net10.0/nx.pdb
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/nx.GeneratedMSBuildEditorConfig.editorconfig
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/nx.AssemblyInfoInputs.cache
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/nx.AssemblyInfo.cs
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/nx.csproj.CoreCompileInputs.cache
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/nx.sourcelink.json
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/nx.dll
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/refint/nx.dll
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/nx.pdb
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/nx.genruntimeconfig.cache
+/home/nyanuwu_/Documents/GitHub/nx-writer/nx-code/obj/Debug/net10.0/ref/nx.dll
