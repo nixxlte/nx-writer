@@ -76,7 +76,13 @@ internal class Program {
     public static void Init(string[] argument) {
         var cmd = argument.FirstOrDefault() ?? "";
         if (argument[0] == string.Empty) {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Hello, World!\n NX CLI default write mode");
+            option = string.Empty;
+            Console.WriteLine("Please select the write method:\n [1] Simple\n [2] Advanced");
+            option = Console.ReadLine();
+            if (option == "1" || option.Equals("simple", StringComparison.OrdinalIgnoreCase)) {
+
+            }
         } else if (IsCommand(cmd, "help", "h")) {
             Help();
         } else if (IsCommand(cmd, "write", "w")) {
@@ -88,7 +94,7 @@ internal class Program {
                 (argument[1].ToLower() != "advanced" || argument[1].ToLower() != "a")) { // if theres an argument after -w, but the arg isnt "--advanced" or "-a"
                 Mode(0);
             }
-            if (argument.Length < 1) { // if theres not an argument afer -w
+            if (argument.Length < 1) { // if theres not an argument after -w
                 option = string.Empty;
                 Console.WriteLine("Please select the write method:\n [1] Simple\n [2] Advanced");
                 option = Console.ReadLine();
