@@ -9,18 +9,57 @@ internal class Program {
     public static string[] simpleDistros = { "ChromeOS-Flex", "xUbuntu", "Ubuntu" };
     public static string[] advancedDistros = { "Brunch-Framework", "Arch", "Debian" };
 
+    public static string image;
+
     public static string option;
     public static string Prefix;
     public static string SPrefix;
 
-    public static bool IsCommand(string input, string full, string shortCmd)
-    {
+    public static bool IsCommand(string input, string full, string shortCmd) {
         return input.Equals(Prefix + full, StringComparison.OrdinalIgnoreCase) ||
                input.Equals(SPrefix + shortCmd, StringComparison.OrdinalIgnoreCase);
     }
 
     public static void Write(string selection) {
-        
+        option = String.Empty;
+        Console.WriteLine("Select a image:");
+        if (selection == "simple") {
+            foreach (var distro in simpleDistros) {
+                Console.WriteLine(". " + distro);
+            }
+        } else if (selection == "advanced") {
+            foreach (var distro in advancedDistros) {
+                Console.WriteLine(". " + distro);
+            }
+        }
+        Console.Write("> ");
+        option = Console.ReadLine();
+
+        if (option = simpleDistros[]) {
+            image = option;
+            option = string.Empty;
+            Console.Write("Selected: " + option + "\n Is that right? (yes/no) ");
+            option = Console.ReadLine();
+            if (option.Equals("yes", StringComparison.OrdinalIgnoreCase)) {
+
+            } else if (option.Equals("no", StringComparison.OrdinalIgnoreCase)) {
+
+            }
+        } else if (option = advancedDistros[]) {
+            if (selection == "simple") {
+                Console.WriteLine("You selected a Advanced image, but youre on Simple mode.\n Please restart NX on Advanced mode, or select a Simple image.");
+            } else if (selection == "advanced") {
+                image = option;
+                option = string.Empty;
+                Console.Write("Selected: " + option + "\n Is that right? (yes/no) ");
+                option = Console.ReadLine();
+                if (option.Equals("yes", StringComparison.OrdinalIgnoreCase)) {
+
+                } else if (option.Equals("no", StringComparison.OrdinalIgnoreCase)) {
+
+                }
+            }
+        }
     }
 
     public static void Show() {
@@ -99,7 +138,9 @@ internal class Program {
                 Console.WriteLine("Please select the write method:\n [1] Simple\n [2] Advanced");
                 option = Console.ReadLine();
                 if (option == "1" || option.Equals("simple", StringComparison.OrdinalIgnoreCase)) {
-
+                    simple("activation");
+                } else if (option == "1" || option.Equals("advanced", StringComparison.OrdinalIgnoreCase)) {
+                    Complex("activation");
                 }
             }
         } else if (IsCommand(cmd, "list", "l")) {
