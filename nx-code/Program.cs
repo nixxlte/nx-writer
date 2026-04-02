@@ -46,7 +46,7 @@ internal class Program {
             Console.Write("Selected: " + option + "\n Is that right? (yes/no) ");
             option = Console.ReadLine();
             if (option.Equals("yes", StringComparison.OrdinalIgnoreCase)) {
-
+                Drive();
             } else if (option.Equals("no", StringComparison.OrdinalIgnoreCase)) {
                 Console.WriteLine("Okay. Restarting proces...");
                 Write(selection);
@@ -60,7 +60,7 @@ internal class Program {
                 Console.Write("Selected: " + option + "\n Is that right? (yes/no) ");
                 option = Console.ReadLine();
                 if (option.Equals("yes", StringComparison.OrdinalIgnoreCase)) {
-
+                    Drive();
                 } else if (option.Equals("no", StringComparison.OrdinalIgnoreCase)) {
                     Console.WriteLine("Okay. Restarting proces...");
                     Write(selection);
@@ -142,6 +142,7 @@ internal class Program {
     
     public static void Main(string[] args) {
         var startup = Environment.GetCommandLineArgs();
+        System();
         if (startup.Length > 1) {
             Init(startup);
         } else {
