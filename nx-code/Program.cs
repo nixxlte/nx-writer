@@ -1,11 +1,15 @@
 ﻿// @formatter:off
 using System;
+using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Linq;
 using System.IO;
+using System.Management;
 
 internal class Program {
     // Code by imNyan.T64 -w-
+
+    public static string os;
 
     public static string[] simpleDistros = { "ChromeOS-Flex", "xUbuntu", "Ubuntu" };
     public static string[] advancedDistros = { "Brunch-Framework", "Arch", "Debian" };
@@ -44,7 +48,8 @@ internal class Program {
             if (option.Equals("yes", StringComparison.OrdinalIgnoreCase)) {
 
             } else if (option.Equals("no", StringComparison.OrdinalIgnoreCase)) {
-
+                Console.WriteLine("Okay. Restarting proces...");
+                Write(selection);
             }
         } else if (option = advancedDistros[]) {
             if (selection == "simple") {
@@ -57,7 +62,8 @@ internal class Program {
                 if (option.Equals("yes", StringComparison.OrdinalIgnoreCase)) {
 
                 } else if (option.Equals("no", StringComparison.OrdinalIgnoreCase)) {
-
+                    Console.WriteLine("Okay. Restarting proces...");
+                    Write(selection);
                 }
             }
         }
@@ -84,7 +90,25 @@ internal class Program {
     }
     
     public static void Drive() {
+        Console.Clear();
+        Console.WriteLine("Please select the disk you want to create the image");
+        if (os == "linux") { // if youre on linux
+            var process = new Process();
+            process.StartInfo.FileName = "lsblk";
+            process.StartInfo.Arguments = "-d -o NAME,SIZE,MODEL,TRAN";
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.UseShellExecute = false;
+            process.Start();
 
+            string output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+            Console.WriteLine(output);
+        } else if (os == "windows") { // if youre on windows
+            var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+            foreach (ManagementObject disk in searcher.Get()){
+                Console.WriteLine($"{disk["Model"]} - {disk["Size"]}");
+            }
+        }
     }
 
     public static void Complex(string on) {
@@ -96,6 +120,14 @@ internal class Program {
     
     public static void Help() {
         Console.WriteLine("NX utility help:");
+    }
+    
+    public static void System() {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+            os = "windows";
+        } else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
+            os = "linux";
+        }
     }
     
     public static void Mode(int mode) {
