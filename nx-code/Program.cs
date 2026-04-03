@@ -15,6 +15,7 @@ internal class Program {
     public static string[] advancedDistros = { "Brunch-Framework", "Arch", "Debian" };
 
     public static string image;
+    public static string device;
 
     public static string option;
     public static string Prefix;
@@ -43,7 +44,7 @@ internal class Program {
         if (option = simpleDistros[]) {
             image = option;
             option = string.Empty;
-            Console.Write("Selected: " + option + "\n Is that right? (yes/no) ");
+            Console.Write("Selected: " + option + "\n Is that right? (yes/no)> ");
             option = Console.ReadLine();
             if (option.Equals("yes", StringComparison.OrdinalIgnoreCase)) {
                 Drive();
@@ -57,7 +58,7 @@ internal class Program {
             } else if (selection == "advanced") {
                 image = option;
                 option = string.Empty;
-                Console.Write("Selected: " + option + "\n Is that right? (yes/no) ");
+                Console.Write("Selected: " + option + "\n Is that right? (yes/no)> ");
                 option = Console.ReadLine();
                 if (option.Equals("yes", StringComparison.OrdinalIgnoreCase)) {
                     Drive();
@@ -90,6 +91,7 @@ internal class Program {
     }
     
     public static void Drive() {
+        option = string.Empty;
         Console.Clear();
         Console.WriteLine("Please select the disk you want to create the image");
         if (os == "linux") { // if youre on linux
@@ -108,6 +110,16 @@ internal class Program {
             foreach (ManagementObject disk in searcher.Get()){
                 Console.WriteLine($"{disk["Model"]} - {disk["Size"]}");
             }
+        }
+        Console.Write("> ");
+        option = Console.ReadLine();
+        if () { // Disk exists
+            device = option;
+            option = string.Empty;
+        } else if () { // Disk doesnt exists
+            Console.Write("\nThe device you have selected does not exist.\n Press any key to continue...");
+            Console.ReadLine();
+            Drive();
         }
     }
 
