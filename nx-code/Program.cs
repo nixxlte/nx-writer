@@ -18,6 +18,7 @@ internal class Program {
     public static string device;
 
     public static string option;
+    public static string method;
     public static string Prefix;
     public static string SPrefix;
 
@@ -82,13 +83,6 @@ internal class Program {
             Console.WriteLine(". " + distro);
         }
     }
-
-    public static void Simple(string on) {
-        if (on == "argument"){
-        } else if (on == "activation") {
-            Write("simple");
-        }
-    }
     
     public static void Drive() {
         option = string.Empty;
@@ -123,11 +117,22 @@ internal class Program {
         }
     }
 
+    public static void Simple(string on) {
+        if (on == "argument"){
+            method = "start";
+        } else if (on == "activation") {
+            method = "selector";
+        }
+        Write("simple");
+    }
+
     public static void Complex(string on) {
         if (on == "argument"){
+            method = "start";
         } else if (on == "activation") {
-            Write("advanced");
+            method = "selector";
         }
+        Write("advanced");
     }
     
     public static void Help() {
