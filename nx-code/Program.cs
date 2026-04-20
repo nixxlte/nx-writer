@@ -7,7 +7,7 @@ using System.IO;
 using System.Management;
 
 internal class Program {
-    // Code by imNyan.T64 -w-
+    // Code by NixLTE404 -w-
 
     public static string os;
 
@@ -42,7 +42,7 @@ internal class Program {
         Console.Write("> ");
         option = Console.ReadLine();
 
-        if (option = simpleDistros[]) {
+        if (option == simpleDistros[]) {
             image = option;
             option = string.Empty;
             Console.Write("Selected: " + option + "\n Is that right? (yes/no)> ");
@@ -53,7 +53,7 @@ internal class Program {
                 Console.WriteLine("Okay. Restarting proces...");
                 Write(selection);
             }
-        } else if (option = advancedDistros[]) {
+        } else if (option == advancedDistros[]) {
             if (selection == "simple") {
                 Console.WriteLine("You selected a Advanced image, but youre on Simple mode.\n Please restart NX on Advanced mode, or select a Simple image.");
             } else if (selection == "advanced") {
@@ -181,7 +181,7 @@ internal class Program {
             Help();
         } else if (IsCommand(cmd, "write", "w")) {
             if (argument.Length > 1 &&
-                (argument[1].Equals(Prefix + "advanced") || argument[1].Equals(SPrefix + "a"))) {
+                (argument[1].Equals(Prefix + "advanced", StringComparison.OrdinalIgnoreCase) || argument[1].Equals(SPrefix + "a", StringComparison.OrdinalIgnoreCase))) {
                 Mode(1);
             }
             if (argument.Length > 1 &&
