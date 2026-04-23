@@ -20,7 +20,8 @@ or
 ```
 NX --simple
 ```
-to open it in a specific mode, you can also type
+to open it in a specific mode  
+plus, you can type
 ``` 
 NX --help
 ```
